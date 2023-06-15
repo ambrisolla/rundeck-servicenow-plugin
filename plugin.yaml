@@ -18,7 +18,7 @@ providers:
       plugin-type: script
       script-interpreter: /usr/bin/python3 -u
       script-file: exec.py
-      script-args: -t rundeck-job-vmcreate -s ${config.servicenow_server} -u ${config.servicenow_username} -p ${config.servicenow_password} -a ${config.servicenow_action} -r ${config.rundeck_server} -k ${config.rundeck_token}
+      script-args: -t ${config.servicenow_template} -s ${config.servicenow_server} -u ${config.servicenow_username} -p ${config.servicenow_password} -a ${config.servicenow_action} -r ${config.rundeck_server} -k ${config.rundeck_token}
       config:
         - type: String
           name: servicenow_username
@@ -36,6 +36,10 @@ providers:
           name: servicenow_server
           title: servicenow_server
           description: URL to access ServiceNow API
+        - type: String
+          name: servicenow_template
+          title: servicenow_template
+          description: Template to be used to create Change
         - type: String
           name: servicenow_action
           title: servicenow_action

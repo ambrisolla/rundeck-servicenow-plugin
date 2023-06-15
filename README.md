@@ -73,3 +73,17 @@ The following configuration is required by the plugin:
 
 <img src="resources/plugin-example.png">
 
+## Templates
+Templates are used to configure the change behavior and to populate hte Change configuration. Template example:
+```yaml
+short_description: VM Create
+justification: Virtual Machine creation.
+implementation_plan: The process will be executed by Rundeck.
+risk_impact_analysis: medium
+backout_plan: If some step fails, the Rundeck Job will remove the Virtual Machine.
+test_plan: n/a
+assignment_group: Service Desk # Service Now group to approve the Change
+change_duration: 1 # Change duration in hours
+```
+
+Template are stored in the ```contents/templates``` path. 
