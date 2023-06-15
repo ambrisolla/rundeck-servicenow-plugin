@@ -39,7 +39,7 @@ providers:
         - type: String
           name: servicenow_template
           title: servicenow_template
-          description: Template to be used to create Change
+          description: Template to be used to create Change (name of yaml file without extension)
         - type: String
           name: servicenow_action
           title: servicenow_action

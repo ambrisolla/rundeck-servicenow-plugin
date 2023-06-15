@@ -74,7 +74,7 @@ The following configuration is required by the plugin:
 <img src="resources/plugin-example.png">
 
 ## Templates
-Templates are used to configure the change behavior and to populate hte Change configuration. Template example:
+Templates are used to configure the change behavior and to populate the Change configuration. Template example:
 ```yaml
 short_description: VM Create
 justification: Virtual Machine creation.
