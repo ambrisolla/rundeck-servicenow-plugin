@@ -23,15 +23,11 @@ providers:
         - type: String
           name: servicenow_username
           title: ServiceNow username
-          description: Key path to access to ServiceNow storage username
-          renderingOptions:
-            selectionAccessor: "STORAGE_PATH"
-            valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
-            storage-path-root: "keys"
+          description: Username to access ServiceNow
         - type: String
           name: servicenow_password
-          title: ServiceNow username password
-          description: Key path to access to ServiceNow storage password
+          title: ServiceNow password
+          description: Key path to access ServiceNow storage password
           renderingOptions:
             selectionAccessor: "STORAGE_PATH"
             valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
@@ -39,11 +35,7 @@ providers:
         - type: String
           name: servicenow_server
           title: ServiceNow server
-          description: Key path to access to ServiceNow server
-          renderingOptions:
-            selectionAccessor: "STORAGE_PATH"
-            valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
-            storage-path-root: "keys"
+          description: URL to access ServiceNow API
         - type: String
           name: servicenow_action
           title: ServiceNow action
@@ -53,8 +45,12 @@ providers:
         - type: String
           name: rundeck_server
           title: Rundeck server
-          description: Rundeck server
+          description: URL to access Rundeck API
         - type: String
           name: rundeck_token
-          title: Rundeck api TOKEN
-          description: Rundeck api TOKEN        
+          title: Rundeck API TOKEN
+          description: Key path to access Rundeck TOKEN storage password
+          renderingOptions:
+            selectionAccessor: "STORAGE_PATH"
+            valueConversion: "STORAGE_PATH_AUTOMATIC_READ"
+            storage-path-root: "keys"

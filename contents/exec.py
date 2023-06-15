@@ -106,13 +106,12 @@ class RundeckServiceNowApproval:
                  '\n\n- Change approval history:\n'
                 f'\n\n{change["change_approval_history"]}')
             print(approved_output)
-            sys.exit(0)            
         else:
             time.sleep(10)
             self.waitForChangeApproval(change_number)
 
     def setChangeState(self, **kwargs):
-        print(f'\n- Setting change state to: {kwargs["state"]}...')
+        print(f' - Setting change state to: {kwargs["state"]}')
         endpoint = f'/api/sn_chg_rest/change/{kwargs["change_sys_id"]}'
         if kwargs['state'] == 'Closed':
             params = { 
@@ -187,7 +186,7 @@ class RundeckServiceNowApproval:
             current = False
         job_info = self.getRundeckJobInfo(job_id)
         change_info = self.getChangeInfoAssociatedWithRundeckJob(job_id)
-        print(f'trying close change: {change_info["change_number"]}...')
+        print(f'Change: {change_info["change_number"]} will be closed:')
         if current:
             change_close_code = 'Successful'
         else:

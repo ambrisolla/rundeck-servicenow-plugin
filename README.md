@@ -3,7 +3,7 @@
 This plugin can be used in a Rundeck workflow to create and close a Service Now change.
 
 ## Features
-- Open a Service Now change;
+- Open a Service Now Change;
 - Close a Service Now Change;
 
 ## Requirements
