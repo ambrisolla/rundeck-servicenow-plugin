@@ -11,11 +11,10 @@ Basically, we can create two types of steps using this plugin: <b>```open_change
 
 When <b>```open_change```</b> is used, the plugin will connect to Service Now, create a change and wait for approval. This step will finish when the Change was approved or rejected. If the change was approved, the plugin will finishes with success and the next step will be executed. If the change was rejected, the plugin will finish with error and the next step will not be executed.
 
-When a change is created with this plugin, a file is created in a temporary filesystem with change information. This file is used for the <b>```close_change```</b> step to recovery a change number associated with the job id. So the action <b>```close_change```</b> can be used in two situations:
+When a change is created with this plugin, a file is created in a temporary filesystem with change information. This file is used for the <b>```close_change```</b> step to recovery a change number associated with the job id. So the action <b>```close_change```</b> can be used in two situations: 
 
- - <b>on the same job that ```open_change``` was used:</b> the plugin will use the current job id to recovery the change information;
- - <b>create a job with a step to ```close_change```</b>: this step uses <b>```${RD_OPTION_JOB_ID}```</b> variable content, so you need to configure <b>```JOB_ID```</b> option passing the job id;
-
+- <b>on the same job that ```open_change``` was used:</b> the plugin will use the current job id to recovery the change information;
+- <b>create a job with a step to ```close_change```</b>: this step uses <b>```${RD_OPTION_JOB_ID}```</b> variable content, so you need to configure <b>```JOB_ID```</b> option passing the job id;
 
 
 ## Requirements
