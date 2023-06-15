@@ -86,4 +86,4 @@ assignment_group: Service Desk # Service Now group to approve the Change
 change_duration: 1 # Change duration in hours
 ```
 
-Template are stored in the ```contents/templates``` path. 
+Template are stored in the <b><a href='contents/template'>```contents/templates```</a></b> path. 
