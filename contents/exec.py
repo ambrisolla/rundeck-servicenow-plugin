@@ -57,8 +57,7 @@ class RundeckServiceNowApproval:
             data = req.json()            
             change_number = data['result']['number']['display_value']
             change_sys_id = data['result']['sys_id']['display_value']
-            change_short_description = data['result'
-                                            ]['short_description']['display_value']            
+            change_short_description = data['result']['short_description']['display_value']            
             output = (
                  '  Change info:\n'
                 f'    - number: {change_number}\n'
