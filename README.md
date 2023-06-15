@@ -58,6 +58,7 @@ The following configuration is required by the plugin:
     - <b>type:</b> String
 
 
+### Screenshot of Plugin configuration
 
 
 <img src="resources/plugin-example.png">
