@@ -1,7 +1,7 @@
-name: servicenow-approval-plugin
+name: servicenow-change-plugin
 rundeckPluginVersion: 2.0
-author: Rundeck Dev
-description: Describe your plugin here
+author: André Müzel Brisolla
+description: This plugin provides a method abstracting to create and close a Service Now change.
 rundeckCompatibilityVersion: 3.x
 targetHostCompatibility: unix
 license: Apache 2.0
@@ -9,12 +9,12 @@ tags:
     - script
     - WorkflowNodeStep
 date: 2023-06-12T17:29:26.695694061Z
-version: 1.0.0
+version: 0.0.1
 providers:
-    - name: servicenow-approval-plugin
+    - name: servicenow-change-plugin
       service: WorkflowNodeStep
-      title: servicenow-approval-plugin
-      description: The description of servicenow-approval-plugin plugin
+      title: servicenow-change-plugin
+      description: Create a Service Now Change and wait form approval.
       plugin-type: script
       script-interpreter: /usr/bin/python3 -u
       script-file: exec.py

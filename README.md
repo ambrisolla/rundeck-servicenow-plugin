@@ -1,4 +1,4 @@
-# servicenow-approval-plugin Rundeck Plugin
+# rundeck-servicenow-plugin
 
 This is a WorkflowNodeStep plugin.
 
