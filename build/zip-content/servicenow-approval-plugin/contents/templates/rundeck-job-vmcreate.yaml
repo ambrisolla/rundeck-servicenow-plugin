@@ -1,0 +1,8 @@
+short_description: VM Create
+justification: Virtual Machine creation.
+implementation_plan: The process will be executed by Rundeck.
+risk_impact_analysis: medium
+backout_plan: If some step fails, the Rundeck Job will remove the Virtual Machine.
+test_plan: n/a
+assignment_group: Service Desk
+change_duration: 1 # hours
