@@ -22,11 +22,11 @@ providers:
       config:
         - type: String
           name: servicenow_username
-          title: ServiceNow username
+          title: servicenow_username
           description: Username to access ServiceNow
         - type: String
           name: servicenow_password
-          title: ServiceNow password
+          title: servicenow_password
           description: Key path to access ServiceNow storage password
           renderingOptions:
             selectionAccessor: "STORAGE_PATH"
@@ -34,21 +34,21 @@ providers:
             storage-path-root: "keys"
         - type: String
           name: servicenow_server
-          title: ServiceNow server
+          title: servicenow_server
           description: URL to access ServiceNow API
         - type: String
           name: servicenow_action
-          title: ServiceNow action
+          title: servicenow_action
           description: Action to perform on Service Now (open_change, close_change)
           values: open_change, close_change
           default: open_change
         - type: String
           name: rundeck_server
-          title: Rundeck server
+          title: rundeck_server
           description: URL to access Rundeck API
         - type: String
           name: rundeck_token
-          title: Rundeck API TOKEN
+          title: rundeck_token
           description: Key path to access Rundeck TOKEN storage password
           renderingOptions:
             selectionAccessor: "STORAGE_PATH"

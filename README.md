@@ -36,5 +36,28 @@ cp build/libs/servicenow-approval-plugin.zip $RDECK_BASE/libext
 ```
 
 ## Plugin configuration example
-The ServiceNow password and Rundeck Password fields needs to be a Rundeck Secret path.
+
+The following configuration is required by the plugin:
+  - <b>```servicenow_username```:</b>
+    - <b>description:</b> Username with permissions to create a Change on ServiceNow. 
+    - <b>type:</b> String
+  - <b>```servicenow_password```:</b>
+    - <b>description:</b> Path to Rundeck Key Storage to access ServiceNow password.
+    - <b>type:</b> String
+  - <b>```servicenow_server```:</b>
+    - <b>description:</b> URL to connect to ServiceNow.
+    - <b>type:</b> String
+  - <b>```servicenow_action```:</b>
+    - <b>description:</b> Action to perform on ServiceNow. Needs to be <b>open_change</b> or <b>close_change</b>.
+    - <b>type:</b> String 
+  - <b>```rundeck_server```:</b> 
+    - <b>description:</b> URL to connecto to Rundeck.
+    - <b>type:</b> String
+  - <b>```rundeck_token```:</b>
+    - <b>description:</b> Path to Rundeck Key Storage to access Rundeck API token.
+    - <b>type:</b> String
+
+
+
+
 <img src="resources/plugin-example.png">
