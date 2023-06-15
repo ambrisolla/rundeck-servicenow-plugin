@@ -3,14 +3,6 @@
 This is a WorkflowNodeStep plugin.
 
 ## Build
-
-* Using gradle
-```
-gradle clean build
-```
-
-* Using make
-
 ```
 make clean build
 ```
