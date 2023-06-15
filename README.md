@@ -34,3 +34,7 @@ make clean build
 ```
 cp build/libs/servicenow-approval-plugin.zip $RDECK_BASE/libext
 ```
+
+## Plugin configuration example
+The ServiceNow password and Rundeck Password fields needs to be a Rundeck Secret path.
+<img src="resources/plugin-example.png">
