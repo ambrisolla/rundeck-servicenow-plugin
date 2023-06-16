@@ -10,4 +10,4 @@ jobs:
         run: make clean build
 
       - name: teste
-        run: ls -lR
+        run: echo ${{ github.ref}}
