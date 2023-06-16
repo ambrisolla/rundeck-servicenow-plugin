@@ -38,6 +38,17 @@ class RundeckServiceNowApproval:
                 return template                
         except Exception as err:
             raise Exception(err)
+    
+    def getChangeForm(self):
+        return {
+            'short_description' : os.getenv('RD_OPTION_SHORT_DESCRIPTION', 'n/a'),
+            'description' : os.getenv('RD_OPTION_DESCRIPTION', 'n/a'),
+            'justification' : os.getenv('RD_OPTION_JUSTIFICATION', 'n/a'),
+            'implementation_plan' : os.getenv('RD_OPTION_IMPLEMENTATION_PLAN', 'n/a'),
+            'risk_impact_analysis' : os.getenv('RD_OPTION_RISK_IMPACT_ANALYSIS', 'n/a'),
+            'backout_plan' : os.getenv('RD_OPTION_BACKOUT_PLAN', 'n/a'),
+            'test_plan' : os.getenv('RD_OPTION_TEST_PLAN', 'n/a'),
+            'assignment_group' : os.getenv('RD_OPTION_ASSIGNMENT_GROUP', 'n/a')}
         
     def getChangeDuration(self, duration):
         start_date = datetime.datetime.now()
@@ -73,8 +84,9 @@ class RundeckServiceNowApproval:
     
     def createNormalChange(self):
         print('\n- Creating change...\n')
-        template = self.loadTemplate(self.ARGUMENTS.TEMPLATE) 
-        change_duration = self.getChangeDuration(template['change_duration'])
+        change_duration = self.getChangeDuration(
+            int(os.getenv('RD_OPTION_CHANGE_DURATION', '1')))
+        template = self.getChangeForm()
         template['start_date'] = change_duration['start_date']
         template['end_date'] = change_duration['end_date']
         template['approval'] = 'Requested'

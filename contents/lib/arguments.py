@@ -6,11 +6,6 @@ class Arguments:
         prog='Service Now integration - (Rundekc Plugin)')
     
     parse.add_argument(
-        '-t', 
-        '--template', 
-        required=True)
-    
-    parse.add_argument(
         '-u',
         '--sn-username',
         required=True)
@@ -53,7 +48,6 @@ class Arguments:
 
     args = vars(parse.parse_args())
 
-    TEMPLATE = args['template']
     SN_USERNAME = args['sn_username']
     SN_PASSWORD = args['sn_password']
     SN_SERVER = args['sn_server']

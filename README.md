@@ -73,17 +73,19 @@ The following configuration is required by the plugin:
 
 <img src="resources/plugin-example.png">
 
-## Templates
-Templates are used to configure the change behavior and to populate the Change configuration. Template example:
-```yaml
-short_description: VM Create
-justification: Virtual Machine creation.
-implementation_plan: The process will be executed by Rundeck.
-risk_impact_analysis: medium
-backout_plan: If some step fails, the Rundeck Job will remove the Virtual Machine.
-test_plan: n/a
-assignment_group: Service Desk # Service Now group to approve the Change
-change_duration: 1 # Change duration in hours
-```
 
-Template are stored in the <b><a href='contents/templates'>```contents/templates```</a></b> path. 
+## ServiceNow Change form
+You can configure the Rundeck job to pass the following parameters to the plugin populate ServiceNow change form.
+
+- short_description
+- description
+- justification
+- implementation_plan
+- risk_impact_analysis
+- backout_plan
+- test_plan
+- assignment_group
+- change_duration
+
+### Screenshot option example
+<img src="resources/option-example.png">
