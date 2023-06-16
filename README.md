@@ -75,7 +75,7 @@ The following configuration is required by the plugin:
 
 
 ## ServiceNow Change form
-You can configure the Rundeck job to pass the following parameters to the plugin populate ServiceNow change form.
+You can configure the Rundeck job to pass the following parameters to populate ServiceNow change form.
 
 - short_description
 - description
