@@ -45,7 +45,7 @@ make clean build
 cp build/libs/servicenow-approval-plugin.zip $RDECK_BASE/libext
 ```
 
-## Plugin configuration example
+## Plugin configuration
 
 The following configuration is required by the plugin:
   - <b>```servicenow_username```:</b>
@@ -68,7 +68,7 @@ The following configuration is required by the plugin:
     - <b>type:</b> String
 
 
-### Screenshot of Plugin configuration
+### Example
 
 
 <img src="resources/plugin-example.png">
@@ -87,5 +87,5 @@ You can configure the Rundeck job to pass the following parameters to populate S
 - assignment_group
 - change_duration
 
-### Screenshot option example
+## Otions example
 <img src="resources/option-example.png">
