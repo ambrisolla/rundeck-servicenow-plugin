@@ -173,8 +173,8 @@ class RundeckServiceNowApproval:
             f'{self.ARGUMENTS.RD_SERVER}/{endpoint}',
             headers={            
                 'X-Rundeck-Auth-Token': self.ARGUMENTS.RD_TOKEN,
-                'Accept': 'application/json',
-                verify=False})
+                'Accept': 'application/json'},
+                verify=False)
         if req.status_code == 200:
             return req.json()
         else:
