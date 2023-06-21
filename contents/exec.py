@@ -11,6 +11,7 @@ from lib.arguments import Arguments
 class RundeckServiceNowApproval:
 
     def __init__(self):
+        self.WAIT_FOR_APPROVAL_SECONDS = 60
         self.TEMP_DIR = '/tmp'
         self.HEADERS = { 'Content-type': 'application/json' }
         self.FULL_PATH = os.path.realpath(os.path.dirname(__file__))
@@ -73,7 +74,7 @@ class RundeckServiceNowApproval:
                  '  Change info:\n'
                 f'    - number: {change_number}\n'
                 f'    - sys_id: {change_sys_id}\n'
-                f'    - short_description: {change_short_description}')            
+                f'    - short_description: {change_short_description}\n')            
             print(output)            
             self.createFileWithChangeInfo(change_number)
         else:
@@ -119,11 +120,11 @@ class RundeckServiceNowApproval:
                 f'\n\n{change["change_approval_history"]}')
             print(approved_output)
         else:
-            time.sleep(10)
+            time.sleep(self.WAIT_FOR_APPROVAL_SECONDS)
             self.waitForChangeApproval(change_number)
 
     def setChangeState(self, **kwargs):
-        print(f' - Setting change state to: {kwargs["state"]}')
+        print(f'- Setting change state to: {kwargs["state"]}')
         endpoint = f'/api/sn_chg_rest/change/{kwargs["change_sys_id"]}'
         if kwargs['state'] == 'Closed':
             params = { 
