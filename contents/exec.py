@@ -49,7 +49,9 @@ class RundeckServiceNowApproval:
             'risk_impact_analysis' : os.getenv('RD_OPTION_RISK_IMPACT_ANALYSIS', 'n/a'),
             'backout_plan' : os.getenv('RD_OPTION_BACKOUT_PLAN', 'n/a'),
             'test_plan' : os.getenv('RD_OPTION_TEST_PLAN', 'n/a'),
-            'assignment_group' : os.getenv('RD_OPTION_ASSIGNMENT_GROUP', 'n/a')}
+            'category' : os.getenv('RD_OPTION_CATEGORY', 'n/a'),
+            'requested_by' : os.getenv('RD_JOB_USER_NAME', ''),
+            'assignment_group' : os.getenv('RD_OPTION_ASSIGNMENT_GROUP', None)}
         
     def getChangeDuration(self, duration):
         start_date = datetime.datetime.now()
