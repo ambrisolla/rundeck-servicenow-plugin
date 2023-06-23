@@ -20,39 +20,16 @@ class RundeckServiceNowApproval:
             self.ARGUMENTS.SN_USERNAME,
             self.ARGUMENTS.SN_PASSWORD)
         
-    def loadTemplate(self, template):        
-        try:
-            is_yml = os.path.exists(
-                f'{self.FULL_PATH}/templates/{template}.yml')
-            is_yaml = os.path.exists(
-                f'{self.FULL_PATH}/templates/{template}.yaml')
-            if is_yaml:
-                file_ext = 'yaml'
-            elif is_yml:
-                file_ext = 'yml'
-            else:
-                raise Exception('Template file not found!')            
-            with open(
-                f'{self.FULL_PATH}/templates/{template}.{file_ext}') \
-                    as template_file:
-                template = yaml.safe_load(template_file.read())
-                return template                
-        except Exception as err:
-            raise Exception(err)
-    
     def getChangeForm(self):
-        return {
-            'short_description' : os.getenv('RD_OPTION_SHORT_DESCRIPTION', 'n/a'),
-            'description' : os.getenv('RD_OPTION_DESCRIPTION', 'n/a'),
-            'justification' : os.getenv('RD_OPTION_JUSTIFICATION', 'n/a'),
-            'implementation_plan' : os.getenv('RD_OPTION_IMPLEMENTATION_PLAN', 'n/a'),
-            'risk_impact_analysis' : os.getenv('RD_OPTION_RISK_IMPACT_ANALYSIS', 'n/a'),
-            'backout_plan' : os.getenv('RD_OPTION_BACKOUT_PLAN', 'n/a'),
-            'test_plan' : os.getenv('RD_OPTION_TEST_PLAN', 'n/a'),
-            'category' : os.getenv('RD_OPTION_CATEGORY', 'n/a'),
-            'requested_by' : os.getenv('RD_JOB_USER_NAME', ''),
-            'assignment_group' : os.getenv('RD_OPTION_ASSIGNMENT_GROUP', None)}
-        
+        environments = dict(os.environ)
+        service_now_wnvironments = [ x for x in environments if x.startswith('RD_OPTION_SN_') ]
+        payload = {}
+        for env in service_now_wnvironments:
+            key = env.replace('RD_OPTION_SN_','').lower()
+            value = environments[env]
+            payload[key] = value        
+        return payload
+
     def getChangeDuration(self, duration):
         start_date = datetime.datetime.now()
         end_date = start_date + datetime.timedelta(hours=duration)

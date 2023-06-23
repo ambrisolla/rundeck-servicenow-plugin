@@ -75,17 +75,14 @@ The following configuration is required by the plugin:
 
 
 ## ServiceNow Change form
-You can configure the Rundeck job to pass the following parameters to populate ServiceNow change form.
 
-- short_description
-- description
-- justification
-- implementation_plan
-- risk_impact_analysis
-- backout_plan
-- test_plan
-- assignment_group
-- change_duration
+To send data to ServiceNow, the options on the form must be in the following format: <b>sn_<field_name></b>.  If you create an Rundeck option <b>```sn_description```</b>, the following environment variable will be generated: <b>```RD_OPTION_SN_DESCRIPTION```</b>. 
 
-## Otions example
+When the job runs, the script plugin will send all data with the environment variables prefix: <b>```RD_OPTION_SN_```</b>.
+
+
+### Example
+
+
 <img src="resources/option-example.png">
+
