@@ -9,7 +9,7 @@ tags:
     - script
     - WorkflowNodeStep
 date: 2023-06-12T17:29:26.695694061Z
-version: 0.1.0
+version: 0.4.0
 providers:
     - name: servicenow-change-plugin
       service: WorkflowNodeStep
