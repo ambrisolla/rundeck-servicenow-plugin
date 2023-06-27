@@ -8,6 +8,11 @@ import datetime
 from requests.auth import HTTPBasicAuth
 from lib.arguments import Arguments
 
+"""
+
+
+"""
+
 class RundeckServiceNowApproval:
 
     def __init__(self):
@@ -19,6 +24,15 @@ class RundeckServiceNowApproval:
         self.SN_AUTH = HTTPBasicAuth(
             self.ARGUMENTS.SN_USERNAME,
             self.ARGUMENTS.SN_PASSWORD)
+        self.CHANGE_STATES = {
+            -5 : 'New',
+            -4 : 'Assess',
+            -3 : 'Authorize',
+            -2 : 'Scheduled',
+            -1 : 'Implement',
+            0  : 'Review',
+            3  : 'Closed',
+            4  : 'Canceled' }
         
     def getChangeForm(self):
         environments = dict(os.environ)
@@ -27,7 +41,7 @@ class RundeckServiceNowApproval:
         for env in service_now_wnvironments:
             key = env.replace('RD_OPTION_SN_','').lower()
             value = environments[env]
-            payload[key] = value        
+            payload[key] = value
         return payload
 
     def getChangeDuration(self, duration):
@@ -57,7 +71,8 @@ class RundeckServiceNowApproval:
             print(output)            
             self.createFileWithChangeInfo(change_number)
         else:
-            print(f'  Error creating change: {req.reason}')        
+            print(f'  Error creating change: {req.reason}')       
+            sys.exit(1) 
         return {
             'change_number' : change_number,
             'change_sys_id' : change_sys_id }
@@ -103,11 +118,11 @@ class RundeckServiceNowApproval:
             self.waitForChangeApproval(change_number)
 
     def setChangeState(self, **kwargs):
-        print(f'- Setting change state to: {kwargs["state"]}')
+        print(f'- Setting change state to: {self.CHANGE_STATES[kwargs["state"]]}')
         endpoint = f'/api/sn_chg_rest/change/{kwargs["change_sys_id"]}'
-        if kwargs['state'] == 'Closed':
+        if kwargs['state'] == 3:
             params = { 
-                'state' : 'Closed',
+                'state' : 3,
                 'close_code' : kwargs['close_code'],
                 'close_notes' : kwargs['close_notes'] }
         else:
@@ -196,11 +211,11 @@ class RundeckServiceNowApproval:
         self.setChangeState(
             change_sys_id=change_info['change_sys_id'],
             change_number=change_info['change_number'],
-            state='Review')    
+            state=0)    
         self.setChangeState(
             change_sys_id=change_info['change_sys_id'],
             change_number=change_info['change_number'],
-            state='Closed',
+            state=3,
             close_code=change_close_code,
             close_notes=change_close_notes)
     
@@ -211,12 +226,12 @@ if __name__ == '__main__':
         service_now.setChangeState(
             change_sys_id=change['change_sys_id'],
             change_number=change['change_number'],
-            state='Assess')        
+            state=-4)        
         print('- Waiting for change approval...\n')        
         service_now.waitForChangeApproval(change['change_number'])
         service_now.setChangeState(
             change_sys_id=change['change_sys_id'],
             change_number=change['change_number'],
-            state='Implement')        
+            state=-1)        
     elif service_now.ARGUMENTS.ACTION == 'close_change':
         change = service_now.closeNormalChange()
