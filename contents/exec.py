@@ -231,7 +231,7 @@ if __name__ == '__main__':
         service_now.setChangeState(
             change_sys_id=change['change_sys_id'],
             change_number=change['change_number'],
-            state=-3)        
+            state=-4)        
         print('- Waiting for change approval...\n')        
         service_now.waitForChangeApproval(change['change_number'])
         service_now.setChangeState(
