@@ -86,3 +86,7 @@ When the job runs, the script plugin will send all data with the environment var
 
 <img src="resources/option-example.png">
 
+
+## Create a Standard Change using a template
+
+To create a Standard Change, you need to create the following option in Rundeck job: <b>```chg_template_id```</b> and pass the template sys_id. This option will produce the environment variable <b>```RD_OPTION_CHG_TEMPLATE_ID```</b> that will be used by the Plugin to create a Change.
