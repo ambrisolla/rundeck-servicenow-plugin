@@ -8,11 +8,6 @@ import datetime
 from requests.auth import HTTPBasicAuth
 from lib.arguments import Arguments
 
-"""
-
-
-"""
-
 class RundeckServiceNowApproval:
 
     def __init__(self):
