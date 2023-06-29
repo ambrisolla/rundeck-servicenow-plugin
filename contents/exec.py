@@ -30,9 +30,9 @@ class RundeckServiceNowApproval:
             -3 : 'Authorize',
             -2 : 'Scheduled',
             -1 : 'Implement',
-            0  : 'Review',
-            3  : 'Closed',
-            4  : 'Canceled' }
+             0 : 'Review',
+             3 : 'Closed',
+             4 : 'Canceled' }
         
     def getChangeForm(self):
         environments = dict(os.environ)
@@ -51,8 +51,12 @@ class RundeckServiceNowApproval:
             'start_date' : str(start_date),
             'end_date' : str(end_date) }
     
-    def submitNormalChange(self, template):
-        endpoint = '/api/sn_chg_rest/change'
+    def submitChange(self, template):
+        CHG_TEMPLATE_ID = os.getenv('RD_OPTION_CHG_TEMPLATE_ID', None)
+        if CHG_TEMPLATE_ID is not None and len(CHG_TEMPLATE_ID) == 32:
+            endpoint = f'/api/sn_chg_rest/change/standard/{CHG_TEMPLATE_ID}'
+        else:
+            endpoint = '/api/sn_chg_rest/change'     
         req = requests.post(
             f'{self.ARGUMENTS.SN_SERVER}{endpoint}', 
             auth=self.SN_AUTH,
@@ -71,6 +75,7 @@ class RundeckServiceNowApproval:
             print(output)            
             self.createFileWithChangeInfo(change_number)
         else:
+            print(req.text)
             print(f'  Error creating change: {req.reason}')       
             sys.exit(1) 
         return {
@@ -85,7 +90,7 @@ class RundeckServiceNowApproval:
         template['start_date'] = change_duration['start_date']
         template['end_date'] = change_duration['end_date']
         template['approval'] = 'Requested'
-        return self.submitNormalChange(template)
+        return self.submitChange(template)
             
     def waitForChangeApproval(self, change_number):
         change = self.getChangeStatus(change_number)
